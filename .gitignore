@@ -1,5 +1,4 @@
 
-*storybook.log
 # Logs
 logs
 *.log
@@ -13,9 +12,6 @@ node_modules
 dist
 dist-ssr
 *.local
-.storybook
-stories
-storybook-static
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -27,4 +23,3 @@ storybook-static
 *.sln
 *.sw?
 
-*storybook.log
