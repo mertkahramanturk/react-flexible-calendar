@@ -1,0 +1,1 @@
+{"v":5,"entries":{"calendar-bigcalendar--default":{"type":"story","id":"calendar-bigcalendar--default","name":"Default","title":"Calendar/BigCalendar","importPath":"./src/stories/BigCalendar.stories.jsx","componentPath":"./src/BigCalendar.jsx","tags":["dev","test"]}}}
