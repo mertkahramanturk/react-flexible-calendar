@@ -39,8 +39,8 @@ const Wrapper = (props) => {
 
 const Template = (args) => <Wrapper {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Playground = Template.bind({});
+Playground.args = {
   events: demoEvents,
   locale: 'en',
   viewType: ['month','week','day'],
