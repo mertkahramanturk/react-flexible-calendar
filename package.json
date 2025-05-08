@@ -1,21 +1,60 @@
 {
   "name": "react-flexible-calendar",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "LICENSE.md"
+  ],
+  "peerDependencies": {
+    "dayjs": "^1.10.9",
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite"
+    "dev": "vite",
+    "build": "rollup -c",
+    "release": "standard-version"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "description": "",
   "dependencies": {
-    "dayjs": "^1.11.13",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "dayjs": "^1.10.9",
+    "react": ">=17",
+    "react-dom": ">=17"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.1",
+    "@babel/preset-react": "^7.27.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-url": "^8.0.2",
+    "cssnano": "^7.0.6",
+    "postcss-import": "^16.1.0",
+    "rollup": "^4.40.1",
+    "rollup-plugin-postcss": "^4.0.2",
     "vite": "^6.3.2"
+  },
+  "keywords": [
+    "react",
+    "calendar",
+    "big-calendar",
+    "date",
+    "scheduler"
+  ],
+  "author": "Mert Kahramantürk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mertkahramanturk/react-flexible-calendar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mertkahramanturk/react-flexible-calendar/issues"
   }
 }
