@@ -113,7 +113,6 @@ function BigCalendar({
 						);
 
 						const groups = getOverlappingGroups(hourEvents);
-						console.log('Gruplar', groups);
 
 						return (
 							<div key={hour} className="big-calendar-hour-row">

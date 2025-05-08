@@ -33,11 +33,11 @@ To install react-flexible-calendar with `npm`:
 
     npm install react-flexible-calendar
 
-## Types / General Calendar Props
+## Types / General Big Calendar Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| **events** | `Array<{ id, title, start:Date, end:Date }>` | `[]` | Calendar event list. |
+| **events** | `Array<{ id, title, start:Date, end:Date }>` | `[]` | Big Calendar event list. |
 | **locale** | `string` | `"en"` | Language (`en`, `tr`, `de`, `ru`, `ar`, …). |
 | **viewType** | `string[]` | `['month','week','day']` | Which views are enabled. |
 | **currentDate** | `Date` | — | Controlled current date (with `onNavigate`). |
@@ -61,7 +61,8 @@ Here is a basic example of using react-flexible-calendar within a react applicat
 ```jsx
 import { useState } from 'react';
 import BigCalendar from 'react-flexible-calendar';
-import 'react-flexible-calendar/dist/style.css'; // if you bundle css separately
+import '../node_modules/react-flexible-calendar/dist/style.css';
+// import 'react-flexible-calendar/dist/style.css';
 
 const events = [
   { id:1, title:'Design Review', start:new Date('2025-06-04T09:00'), end:new Date('2025-06-04T10:30') },
@@ -89,6 +90,61 @@ export default function App() {
     />
   );
 }
+
+
+ReactDOM.render(<App />, document.getElementById("react-div"));
+```
+
+## Types / General Date Picker Props
+| Prop                  | Type                       | Default        | Description                                                                              |
+| --------------------- | -------------------------- | -------------- | ---------------------------------------------------------------------------------------- |
+| **value**             | `Date`                     | —              | Controlled selected date.                                                                |
+| **defaultValue**      | `Date`                     | `new Date()`   | Uncontrolled initial value.                                                              |
+| **inputMode**         | `boolean`                  | `false`        | `true` → renders as an **input** that pops the calendar; `false` → inline mini‑calendar. |
+| **format**            | `string`                   | `"YYYY-MM-DD"` | Day.js display format for the input.                                                     |
+| **showTime**          | `boolean`                  | `false`        | Shows hour / minute selectors.                                                           |
+| **timePeriod**        | `number`                   | `1`            | Minute step (1 – 60).                                                                    |
+| **minDate / maxDate** | `Date`                     | —              | Limits selectable days.                                                                  |
+| **minTime / maxTime** | `"HH:mm"`                  | —              | Limits selectable time range.                                                            |
+| **disabledDates**     | `Date[] \| string[]`       | `[]`           | Exact dates that cannot be selected.                                                     |
+| **highlightDays**     | `Date[] \| string[]`       | `[]`           | Dates to visually highlight.                                                             |
+| **disabled**          | `boolean`                  | `false`        | Disables the whole component.                                                            |
+| **locale**            | `string`                   | `"en"`         | Language (`en`, `tr`, `de`, `ru`, `ar`, `es`, …).                                        |
+| **className / style** | `string` / `CSSProperties` | —              | Extra class / inline styles.                                                             |
+| **onChange**          | `(date: Date) ⇒ void`      | `() => {}`     | Fired on every selection.                                                                |
+
+
+## Usage
+
+Here is a basic example of using react-flexible-calendar within a react application.
+
+```jsx
+import { useState } from 'react';
+import DatePicker from 'react-flexible-calendar/DatePicker';
+import '../node_modules/react-flexible-calendar/dist/style.css';
+// import 'react-flexible-calendar/dist/style.css';
+export default function Example() {
+  const [date, setDate] = useState(null);
+
+  return (
+    <DatePicker
+      inputMode               
+      showTime
+      locale="en"
+      format="DD.MM.YYYY HH:mm"
+      minDate={new Date()}
+      maxDate={dayjs().add(4,'month').toDate()}
+      minTime="09:00"
+      maxTime="18:00"
+      timePeriod={5}
+      highlightDays={['2025-05-13', '2025-05-19', '2025-05-27']}
+      disabledDates={['2025-05-04', '2025-05-20']}
+      onChange={setDate}
+      style={{ maxWidth: 200 }}
+    />
+  );
+}
+
 
 
 ReactDOM.render(<App />, document.getElementById("react-div"));
