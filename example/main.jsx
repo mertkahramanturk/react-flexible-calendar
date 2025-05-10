@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import {BigCalendar, DatePicker} from 'react-flexible-calendar';
+import { BigCalendar, DatePicker, DateRangePicker } from 'react-flexible-calendar';
 import dayjs from 'dayjs';
 import '../node_modules/react-flexible-calendar/dist/index.css'
 
@@ -72,27 +72,29 @@ const events = [
 const App = () => {
 	const [calendarDate, setCalendarDate] = useState(new Date('2025-04-01'));
 	const [date, setDate] = useState(new Date());
-
+	const [start, setStart] = useState();
+	const [end, setEnd] = useState();
+	console.log("Start Date", start, "End Date", end)
 	return (
 		<div style={{ maxWidth: '95%', margin: '0 auto', padding: '24px' }}>
-			<BigCalendar 
-        currentDate={calendarDate}
-        events={events} 
+			<BigCalendar
+				currentDate={calendarDate}
+				events={events}
 				locale="tr"
-        onEventClick={(e) => console.log('clicked:', e)}
-        onEventHover={(e) => console.log('Hover:', e)}
-        className="my-custom-calendar"
-        style={{ backgroundColor: '#fcfcfc', borderRadius: '8px', padding: '8px' }}
+				onEventClick={(e) => console.log('clicked:', e)}
+				onEventHover={(e) => console.log('Hover:', e)}
+				className="my-custom-calendar"
+				style={{ backgroundColor: '#fcfcfc', borderRadius: '8px', padding: '8px' }}
 				viewType={['month', 'week', 'day']}
 				dayStartHour={8}
 				dayEndHour={22}
 				onAdd={(date) => console.log('new event start time:', date)}
-  			enableAdd={true}
-        onNavigate={(newDate) => {
-          console.log('New date:', newDate);
-          setCalendarDate(newDate);
-        }}
-      />
+				enableAdd={true}
+				onNavigate={(newDate) => {
+					console.log('New date:', newDate);
+					setCalendarDate(newDate);
+				}}
+			/>
 			<DatePicker
 				locale="en"
 				showTime
@@ -112,7 +114,21 @@ const App = () => {
 				]}
 				disabledDates={['2025-05-04', '2025-05-20']}
 			/>
-
+			<DateRangePicker
+				startDate={start}
+				endDate={end}
+				onChange={({ startDate, endDate }) => {
+					setStart(startDate);
+					setEnd(endDate);
+				}}
+				locale="tr"
+				inputMode={true}
+				disabledDates={['2025-05-11', '2025-05-12']}
+				minDate={'2025-05-13'}
+				maxDate={'2025-06-23'}
+				placeholder='Select date range...'
+				calendars={2}
+			/>
 		</div>
 	);
 };
