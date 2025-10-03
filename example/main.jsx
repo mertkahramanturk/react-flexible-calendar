@@ -4,7 +4,6 @@ import { BigCalendar, DatePicker, DateRangePicker } from 'react-flexible-calenda
 import dayjs from 'dayjs';
 import '../node_modules/react-flexible-calendar/dist/index.css'
 
-
 const events = [
 	{
 		id: 1,
@@ -128,6 +127,10 @@ const App = () => {
 				maxDate={'2025-06-23'}
 				placeholder='Select date range...'
 				calendars={2}
+				minTime="09:00"
+				maxTime="18:00"
+				timePeriod={5}
+				showTime={true}
 			/>
 		</div>
 	);
